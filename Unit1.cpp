@@ -12,7 +12,6 @@ TForm1 *Form1;
 int x=-8,y=-8; // the movement of the ball
 
 
-
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -56,5 +55,53 @@ void __fastcall TForm1::TRightUTimer(TObject *Sender)
 void __fastcall TForm1::TRightDTimer(TObject *Sender)
 {
    if (PaddleR->Top + PaddleR->Height < Tlo->Height) PaddleR->Top+=10;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::TimeBallTimer(TObject *Sender)
+{
+   Ball->Left+=x;
+   Ball->Top+=y;
+
+   //Top collision
+   if(Ball->Top-5 <=0) {
+   y=-y;
+   }
+
+   //Down collision
+   if(Ball->Top+Ball->Height >= Tlo->Height) {
+   y=-y;
+   }
+
+   //left paddle collision
+   if ((Ball->Left <= PaddleL->Left+PaddleL->Width)&&
+      (Ball->Top <= PaddleL->Top+PaddleL->Height)&&  // przeleci dolem
+      (Ball->Top > PaddleL->Top)){                   //przeleci gora
+       x=-x;
+       Ball->Picture->LoadFromFile("img/ballL.bmp");
+      }
+
+   //right paddle collision
+   if ((Ball->Left+Ball->Width >= PaddleR->Left)&&
+      (Ball->Top <=  PaddleR->Top+PaddleR->Height)&&
+       (Ball->Top > PaddleR->Top)){
+       x=-x;
+       Ball->Picture->LoadFromFile("img/ballR.bmp");
+      }
+
+   //strata pkt
+   else if (Ball->Left < PaddleL->Left ||
+       Ball->Left+Ball->Width > PaddleR->Left+PaddleR->Width){
+       Ball->Visible=false;
+       TimeBall->Enabled=false;
+       Ball->Left=325;
+       Ball->Top=200;
+
+       Application->ProcessMessages();
+       Sleep(200);
+       Ball->Picture->LoadFromFile("img/ball.bmp");
+       Ball->Visible=true;
+       TimeBall->Enabled=true;
+       }
+
 }
 //---------------------------------------------------------------------------

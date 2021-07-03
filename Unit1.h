@@ -39,6 +39,7 @@ __published:	// IDE-managed Components
           TShiftState Shift);
         void __fastcall TRightUTimer(TObject *Sender);
         void __fastcall TRightDTimer(TObject *Sender);
+        void __fastcall TimeBallTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

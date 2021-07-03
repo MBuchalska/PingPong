@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 194
+  Left = 215
   Top = 106
-  Width = 1033
+  Width = 1012
   Height = 544
   Caption = 'PingPongGame'
   Color = clBtnFace
@@ -19,7 +19,7 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 700
-    Height = 500
+    Height = 505
     Brush.Color = clSilver
   end
   object Countdown: TLabel
@@ -493,7 +493,7 @@ object Form1: TForm1
   end
   object Ball: TImage
     Left = 328
-    Top = 225
+    Top = 233
     Width = 25
     Height = 25
     Picture.Data = {
@@ -649,6 +649,8 @@ object Form1: TForm1
     Top = 8
   end
   object TimeBall: TTimer
+    Interval = 50
+    OnTimer = TimeBallTimer
     Left = 328
     Top = 264
   end

@@ -19,7 +19,7 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 700
-    Height = 500
+    Height = 505
     Brush.Color = clSilver
   end
   object Countdown: TLabel
@@ -493,7 +493,7 @@ object Form1: TForm1
   end
   object Ball: TImage
     Left = 328
-    Top = 225
+    Top = 305
     Width = 25
     Height = 25
     Picture.Data = {
@@ -605,6 +605,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Start'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -619,6 +620,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Ranking'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -633,6 +635,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Exit'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -646,26 +649,36 @@ object Form1: TForm1
     Top = 8
   end
   object TimeBall: TTimer
+    Interval = 50
+    OnTimer = TimeBallTimer
     Left = 328
     Top = 264
   end
   object TLeftUp: TTimer
+    Enabled = False
     Interval = 50
     OnTimer = TLeftUpTimer
     Left = 8
     Top = 8
   end
   object TLeftD: TTimer
+    Enabled = False
     Interval = 50
     OnTimer = TLeftDTimer
     Left = 8
     Top = 40
   end
   object TRightU: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TRightUTimer
     Left = 664
     Top = 8
   end
   object TRightD: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TRightDTimer
     Left = 664
     Top = 40
   end
