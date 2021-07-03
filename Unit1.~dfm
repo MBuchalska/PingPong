@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 172
-  Top = 169
+  Left = 194
+  Top = 106
   Width = 1033
   Height = 544
-  Caption = 'Form1'
+  Caption = 'PingPongGame'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,9 +11,11 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
-  object Shape1: TShape
+  object Tlo: TShape
     Left = 0
     Top = 0
     Width = 700
@@ -648,10 +650,14 @@ object Form1: TForm1
     Top = 264
   end
   object TLeftUp: TTimer
+    Interval = 50
+    OnTimer = TLeftUpTimer
     Left = 8
     Top = 8
   end
   object TLeftD: TTimer
+    Interval = 50
+    OnTimer = TLeftDTimer
     Left = 8
     Top = 40
   end

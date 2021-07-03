@@ -13,7 +13,7 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-        TShape *Shape1;
+        TShape *Tlo;
         TLabel *Countdown;
         TLabel *PlayerLeft;
         TLabel *PlayerRight;
@@ -31,6 +31,14 @@ __published:	// IDE-managed Components
         TTimer *TLeftD;
         TTimer *TRightU;
         TTimer *TRightD;
+        void __fastcall TLeftUpTimer(TObject *Sender);
+        void __fastcall TLeftDTimer(TObject *Sender);
+        void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+        void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+        void __fastcall TRightUTimer(TObject *Sender);
+        void __fastcall TRightDTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

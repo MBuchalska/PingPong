@@ -11,9 +11,11 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
-  object Shape1: TShape
+  object Tlo: TShape
     Left = 0
     Top = 0
     Width = 700
@@ -603,6 +605,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Start'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -617,6 +620,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Ranking'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -631,6 +635,7 @@ object Form1: TForm1
     Width = 161
     Height = 41
     Caption = 'Exit'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -648,18 +653,30 @@ object Form1: TForm1
     Top = 264
   end
   object TLeftUp: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TLeftUpTimer
     Left = 8
     Top = 8
   end
   object TLeftD: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TLeftDTimer
     Left = 8
     Top = 40
   end
   object TRightU: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TRightUTimer
     Left = 664
     Top = 8
   end
   object TRightD: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = TRightDTimer
     Left = 664
     Top = 40
   end
