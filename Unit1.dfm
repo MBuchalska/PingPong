@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 215
   Top = 106
   Width = 1012
-  Height = 544
+  Height = 546
   Caption = 'PingPongGame'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
@@ -23,12 +24,11 @@ object Form1: TForm1
     Brush.Color = clSilver
   end
   object Countdown: TLabel
-    Left = 736
+    Left = 712
     Top = 16
-    Width = 137
-    Height = 57
+    Width = 105
+    Height = 46
     Alignment = taCenter
-    AutoSize = False
     Caption = '02:00'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -613,6 +613,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    OnClick = BStartClick
   end
   object BRating: TButton
     Left = 712
@@ -645,6 +646,7 @@ object Form1: TForm1
     TabOrder = 2
   end
   object TimeTotal: TTimer
+    OnTimer = TimeTotalTimer
     Left = 888
     Top = 8
   end
