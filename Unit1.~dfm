@@ -644,28 +644,28 @@ object Form1: TForm1
   end
   object TLeftUp: TTimer
     Enabled = False
-    Interval = 50
+    Interval = 5
     OnTimer = TLeftUpTimer
     Left = 8
     Top = 8
   end
   object TLeftD: TTimer
     Enabled = False
-    Interval = 50
+    Interval = 5
     OnTimer = TLeftDTimer
     Left = 8
     Top = 40
   end
   object TRightU: TTimer
     Enabled = False
-    Interval = 50
+    Interval = 5
     OnTimer = TRightUTimer
     Left = 664
     Top = 8
   end
   object TRightD: TTimer
     Enabled = False
-    Interval = 50
+    Interval = 5
     OnTimer = TRightDTimer
     Left = 664
     Top = 40

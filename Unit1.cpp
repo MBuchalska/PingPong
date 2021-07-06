@@ -9,7 +9,8 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
-int x=-8,y=-8; // the movement of the ball
+int x,y; // the movement of the ball
+int a=-8,b=-8; //movement of the ball
 int PointsL=0, PointsR=0; // points for players
 int s = 120; // time for the game
 
@@ -66,19 +67,20 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
 
    //Top collision
    if(Ball->Top-5 <=0) {
-   y=-y;
+   y=-1.1*y;
    }
 
    //Down collision
    if(Ball->Top+Ball->Height >= Tlo->Height) {
-   y=-y;
+   y=-1.1*y;
    }
 
    //left paddle collision
    if ((Ball->Left <= PaddleL->Left+PaddleL->Width)&&
       (Ball->Top <= PaddleL->Top+PaddleL->Height)&&  // przeleci dolem
       (Ball->Top > PaddleL->Top)){                   //przeleci gora
-       x=-x;
+       x=-1.1*x;
+       TimeBall->Interval-=2;
        Ball->Picture->LoadFromFile("img/ballL.bmp");
       }
 
@@ -86,7 +88,8 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
    if ((Ball->Left+Ball->Width >= PaddleR->Left)&&
       (Ball->Top <=  PaddleR->Top+PaddleR->Height)&&
        (Ball->Top > PaddleR->Top)){
-       x=-x;
+       x=-1.1*x;
+       TimeBall->Interval-=2;
        Ball->Picture->LoadFromFile("img/ballR.bmp");
       }
 
@@ -110,6 +113,9 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
 
        Ball->Left=Tlo->Width/2;
        Ball->Top=Tlo->Height/2+2*x;
+      // x=a;
+      // y=b;
+       TimeBall->Interval=50;
 
        Application->ProcessMessages();
        Sleep(200);
@@ -140,6 +146,9 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
 
        Ball->Left=Tlo->Width/2;
        Ball->Top=Tlo->Height/2+2*x;
+     //  x=a;
+     //  y=b;
+       TimeBall->Interval=50;
 
        Application->ProcessMessages();
        Sleep(200);
@@ -181,8 +190,8 @@ void __fastcall TForm1::TimeTotalTimer(TObject *Sender)
    BExit->Enabled=true;
 
 
-   if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy");
-   else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy");
+   if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy \n");
+   else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy \n");
    else if (PointsL<PointsR)  ShowMessage("Remis");
    }
 }
@@ -224,6 +233,7 @@ void __fastcall TForm1::BStartClick(TObject *Sender)
    BStart->Enabled=false;
    BExit->Enabled=false;
 
+   x=a, y=b;
    PointsL=0, PointsR=0;
    s=120;
    Ball->Left=Tlo->Width/2;
@@ -237,7 +247,7 @@ void __fastcall TForm1::BStartClick(TObject *Sender)
    PktLeft->Caption="0";
    PktRight->Caption="0";
 
-
+   TimeBall->Interval=50;
    TimeTotal->Enabled=true;
    TimeBall->Enabled=true;
 
