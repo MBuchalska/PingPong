@@ -18,7 +18,6 @@ __published:	// IDE-managed Components
         TLabel *PlayerLeft;
         TLabel *PlayerRight;
         TButton *BStart;
-        TButton *BRating;
         TButton *BExit;
         TLabel *PktRight;
         TLabel *PktLeft;
@@ -43,6 +42,7 @@ __published:	// IDE-managed Components
         void __fastcall TimeTotalTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall BStartClick(TObject *Sender);
+        void __fastcall BExitClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

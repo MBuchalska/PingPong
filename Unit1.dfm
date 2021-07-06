@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 215
-  Top = 106
+  Left = 180
+  Top = 102
   Width = 1012
   Height = 546
   Caption = 'PingPongGame'
@@ -601,7 +601,7 @@ object Form1: TForm1
   end
   object BStart: TButton
     Left = 712
-    Top = 272
+    Top = 384
     Width = 161
     Height = 41
     Caption = 'Start'
@@ -615,24 +615,9 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = BStartClick
   end
-  object BRating: TButton
-    Left = 712
-    Top = 328
-    Width = 161
-    Height = 41
-    Caption = 'Ranking'
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -31
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-  end
   object BExit: TButton
     Left = 712
-    Top = 384
+    Top = 440
     Width = 161
     Height = 41
     Caption = 'Exit'
@@ -643,7 +628,8 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
+    OnClick = BExitClick
   end
   object TimeTotal: TTimer
     OnTimer = TimeTotalTimer

@@ -177,15 +177,26 @@ void __fastcall TForm1::TimeTotalTimer(TObject *Sender)
    TRightU->Enabled=false;
 
    BStart->Enabled=true;
+   BStart->Caption="Nowa gra";
    BExit->Enabled=true;
-   BRating->Enabled=true;
+
+
+   if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy");
+   else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy");
+   else if (PointsL<PointsR)  ShowMessage("Remis");
    }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
+   ShowMessage("Witaj w programie. \n \n"
+               "Gracz lewy steruje klawiszami W i S. \n"
+               "Gracz prawy strza³kami góra-dó³ \n"
+               "Na grê macie 2 minuty");
    Countdown->Font->Color=clWindowText;
+   PlayerLeft->Font->Color= clWindowText;
+   PlayerRight->Font->Color= clWindowText;
    Countdown->Caption="02:00";
    PktLeft->Caption="0";
    PktRight->Caption="0";
@@ -197,25 +208,50 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    TRightD->Enabled=false;
    TRightU->Enabled=false;
 
-   Ball->Visible=false;
-   
+   Ball->Left=Tlo->Width/2;
+   Ball->Top=Tlo->Height/2;
+
+   Ball->Visible=true;
    BStart->Enabled=true;
+   BStart->Caption="Start";
    BExit->Enabled=true;
-   BRating->Enabled=true;
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::BStartClick(TObject *Sender)
 {
-   Ball->Visible=true;
-
    BStart->Enabled=false;
    BExit->Enabled=false;
-   BRating->Enabled=false;
+
+   PointsL=0, PointsR=0;
+   s=120;
+   Ball->Left=Tlo->Width/2;
+   Ball->Top=Tlo->Height/2;
+
+   Countdown->Font->Color=clWindowText;
+   PlayerLeft->Font->Color= clWindowText;
+   PlayerRight->Font->Color= clWindowText;
+   Ball->Picture->LoadFromFile("img/ball.bmp");
+   Countdown->Caption="02:00";
+   PktLeft->Caption="0";
+   PktRight->Caption="0";
+
 
    TimeTotal->Enabled=true;
    TimeBall->Enabled=true;
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BExitClick(TObject *Sender)
+{
+        if(Application->MessageBoxA("Dziêkujemy za grê \n"
+        "Czy zakonczyc program?","Potwierdz",
+        MB_YESNO | MB_ICONQUESTION)==IDNO){
+        Action=caNone;
+        }
+        else Application->Terminate();
 }
 //---------------------------------------------------------------------------
 
