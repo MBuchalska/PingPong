@@ -24,12 +24,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::TLeftUpTimer(TObject *Sender)
 {
-    if  (PaddleL->Top >10)  PaddleL->Top-=10;
+    if  (PaddleL->Top >2)  PaddleL->Top-=10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::TLeftDTimer(TObject *Sender)
 {
-    if (PaddleL->Top + PaddleL->Height < Tlo->Height) PaddleL->Top+=10;
+    if (PaddleL->Top + PaddleL->Height < Tlo->Height-8) PaddleL->Top+=10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
@@ -52,12 +52,12 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 void __fastcall TForm1::TRightUTimer(TObject *Sender)
 {
-   if  (PaddleR->Top >10)  PaddleR->Top-=10;
+   if  (PaddleR->Top >2)  PaddleR->Top-=10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::TRightDTimer(TObject *Sender)
 {
-   if (PaddleR->Top + PaddleR->Height < Tlo->Height) PaddleR->Top+=10;
+   if (PaddleR->Top + PaddleR->Height < Tlo->Height-8) PaddleR->Top+=10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::TimeBallTimer(TObject *Sender)
@@ -79,7 +79,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
    if ((Ball->Left <= PaddleL->Left+PaddleL->Width)&&
       (Ball->Top <= PaddleL->Top+PaddleL->Height)&&  // przeleci dolem
       (Ball->Top > PaddleL->Top)){                   //przeleci gora
-       x=-1.1*x;
+       x=-x;
        TimeBall->Interval-=2;
        Ball->Picture->LoadFromFile("img/ballL.bmp");
       }
@@ -88,7 +88,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
    if ((Ball->Left+Ball->Width >= PaddleR->Left)&&
       (Ball->Top <=  PaddleR->Top+PaddleR->Height)&&
        (Ball->Top > PaddleR->Top)){
-       x=-1.1*x;
+       x=-x;
        TimeBall->Interval-=2;
        Ball->Picture->LoadFromFile("img/ballR.bmp");
       }
@@ -113,8 +113,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
 
        Ball->Left=Tlo->Width/2;
        Ball->Top=Tlo->Height/2+2*x;
-       x=a;
-       y=b;
+
        TimeBall->Interval=50;
 
        Application->ProcessMessages();
@@ -146,8 +145,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
 
        Ball->Left=Tlo->Width/2;
        Ball->Top=Tlo->Height/2+2*x;
-       x=a;
-       y=b;
+
        TimeBall->Interval=50;
 
        Application->ProcessMessages();
@@ -185,13 +183,15 @@ void __fastcall TForm1::TimeTotalTimer(TObject *Sender)
    TRightD->Enabled=false;
    TRightU->Enabled=false;
 
+   BStart->Visible=true;
+   BExit->Visible=true;
    BStart->Enabled=true;
    BStart->Caption="Nowa gra";
    BExit->Enabled=true;
 
 
-   if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy \n");
-   else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy \n");
+   if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy \n" "Liczba punktów: " +PktLeft->Caption);
+   else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy \n" "Liczba punktów: "+PktRight->Caption);
    else if (PointsL<PointsR)  ShowMessage("Remis");
    }
 }
@@ -202,7 +202,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    ShowMessage("Witaj w programie. \n \n"
                "Gracz lewy steruje klawiszami W i S. \n"
                "Gracz prawy strza³kami góra-dó³ \n"
-               "Na grê macie 2 minuty");
+               "Na grê macie 2 minuty \n \n"
+               "Po ka¿dym odbiciu pi³ka przyspiesza \n \n"
+               "Mi³ej zabawy :)");
    Countdown->Font->Color=clWindowText;
    PlayerLeft->Font->Color= clWindowText;
    PlayerRight->Font->Color= clWindowText;
@@ -223,6 +225,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    Ball->Visible=true;
    BStart->Enabled=true;
    BStart->Caption="Start";
+   BStart->Visible=true;
+   BExit->Visible=true;
    BExit->Enabled=true;
 
 }
@@ -232,6 +236,8 @@ void __fastcall TForm1::BStartClick(TObject *Sender)
 {
    BStart->Enabled=false;
    BExit->Enabled=false;
+   BStart->Visible=false;
+   BExit->Visible=false;
 
    x=a, y=b;
    PointsL=0, PointsR=0;
@@ -264,4 +270,5 @@ void __fastcall TForm1::BExitClick(TObject *Sender)
         else Application->Terminate();
 }
 //---------------------------------------------------------------------------
+
 

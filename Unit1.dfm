@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 180
-  Top = 102
-  Width = 1012
-  Height = 546
+  Left = 229
+  Top = 49
+  Width = 1075
+  Height = 612
   Caption = 'PingPongGame'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,13 +19,13 @@ object Form1: TForm1
   object Tlo: TShape
     Left = 0
     Top = 0
-    Width = 700
+    Width = 1056
     Height = 505
     Brush.Color = clSilver
   end
   object Countdown: TLabel
-    Left = 712
-    Top = 16
+    Left = 472
+    Top = 512
     Width = 105
     Height = 46
     Alignment = taCenter
@@ -38,8 +38,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object PlayerLeft: TLabel
-    Left = 712
-    Top = 104
+    Left = 8
+    Top = 512
     Width = 177
     Height = 41
     AutoSize = False
@@ -52,8 +52,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object PlayerRight: TLabel
-    Left = 712
-    Top = 176
+    Left = 792
+    Top = 512
     Width = 177
     Height = 41
     AutoSize = False
@@ -66,8 +66,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object PktRight: TLabel
-    Left = 904
-    Top = 176
+    Left = 984
+    Top = 512
     Width = 65
     Height = 41
     AutoSize = False
@@ -80,8 +80,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object PktLeft: TLabel
-    Left = 904
-    Top = 104
+    Left = 192
+    Top = 512
     Width = 65
     Height = 41
     AutoSize = False
@@ -96,8 +96,8 @@ object Form1: TForm1
   object PaddleL: TImage
     Left = 80
     Top = 180
-    Width = 25
-    Height = 121
+    Width = 20
+    Height = 140
     Picture.Data = {
       07544269746D6170A6170000424DA61700000000000036000000280000001400
       000064000000010018000000000070170000230B0000230B0000000000000000
@@ -293,10 +293,10 @@ object Form1: TForm1
     Transparent = True
   end
   object PaddleR: TImage
-    Left = 615
+    Left = 951
     Top = 180
-    Width = 25
-    Height = 121
+    Width = 20
+    Height = 140
     Picture.Data = {
       07544269746D6170A6170000424DA61700000000000036000000280000001400
       000064000000010018000000000070170000230B0000230B0000000000000000
@@ -492,7 +492,7 @@ object Form1: TForm1
     Transparent = True
   end
   object Ball: TImage
-    Left = 328
+    Left = 520
     Top = 233
     Width = 25
     Height = 25
@@ -600,8 +600,8 @@ object Form1: TForm1
     Transparent = True
   end
   object BStart: TButton
-    Left = 712
-    Top = 384
+    Left = 440
+    Top = 328
     Width = 161
     Height = 41
     Caption = 'Start'
@@ -616,8 +616,8 @@ object Form1: TForm1
     OnClick = BStartClick
   end
   object BExit: TButton
-    Left = 712
-    Top = 440
+    Left = 440
+    Top = 392
     Width = 161
     Height = 41
     Caption = 'Exit'
@@ -633,14 +633,14 @@ object Form1: TForm1
   end
   object TimeTotal: TTimer
     OnTimer = TimeTotalTimer
-    Left = 888
-    Top = 8
+    Left = 584
+    Top = 520
   end
   object TimeBall: TTimer
     Interval = 50
     OnTimer = TimeBallTimer
-    Left = 328
-    Top = 264
+    Left = 520
+    Top = 272
   end
   object TLeftUp: TTimer
     Enabled = False
@@ -660,14 +660,14 @@ object Form1: TForm1
     Enabled = False
     Interval = 5
     OnTimer = TRightUTimer
-    Left = 664
+    Left = 1008
     Top = 8
   end
   object TRightD: TTimer
     Enabled = False
     Interval = 5
     OnTimer = TRightDTimer
-    Left = 664
+    Left = 1008
     Top = 40
   end
 end
