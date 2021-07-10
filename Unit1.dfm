@@ -5,6 +5,8 @@ object Form1: TForm1
   Height = 612
   Caption = 'PingPongGame'
   Color = clBtnFace
+  UseDockManager = True
+  DockSite = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

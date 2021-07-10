@@ -192,7 +192,7 @@ void __fastcall TForm1::TimeTotalTimer(TObject *Sender)
 
    if(PointsL>PointsR) ShowMessage("Wygrywa gracz lewy \n" "Liczba punktów: " +PktLeft->Caption);
    else if (PointsL<PointsR)  ShowMessage("Wygrywa gracz prawy \n" "Liczba punktów: "+PktRight->Caption);
-   else if (PointsL<PointsR)  ShowMessage("Remis");
+   else if (PointsL<PointsR)  ShowMessage("REMIS!");
    }
 }
 //---------------------------------------------------------------------------
@@ -203,6 +203,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
                "Gracz lewy steruje klawiszami W i S. \n"
                "Gracz prawy strza³kami góra-dó³ \n"
                "Na grê macie 2 minuty \n \n"
+               "Pozosta³y czas i punkty pod plansz¹ \n \n"
                "Po ka¿dym odbiciu pi³ka przyspiesza \n \n"
                "Mi³ej zabawy :)");
    Countdown->Font->Color=clWindowText;
