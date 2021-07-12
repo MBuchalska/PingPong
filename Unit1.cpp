@@ -81,7 +81,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
       (Ball->Top > PaddleL->Top)){                   //przeleci gora
        x=-x;
        TimeBall->Interval-=2;
-       Ball->Picture->LoadFromFile("img/ballL.bmp");
+       Ball->Picture-> Bitmap->Handle=LoadBitmap(HInstance,"BALLL");
       }
 
    //right paddle collision
@@ -90,7 +90,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
        (Ball->Top > PaddleR->Top)){
        x=-x;
        TimeBall->Interval-=2;
-       Ball->Picture->LoadFromFile("img/ballR.bmp");
+       Ball->Picture->Bitmap->Handle=LoadBitmap(HInstance,"BALLR");
       }
 
    //points for rignt player
@@ -119,7 +119,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
        Application->ProcessMessages();
        Sleep(200);
 
-       Ball->Picture->LoadFromFile("img/ball.bmp");
+       Ball->Picture->Bitmap->Handle=LoadBitmap(HInstance,"BALL");
        Ball->Visible=true;
        TimeBall->Enabled=true;
        }
@@ -151,7 +151,7 @@ void __fastcall TForm1::TimeBallTimer(TObject *Sender)
        Application->ProcessMessages();
        Sleep(200);
 
-       Ball->Picture->LoadFromFile("img/ball.bmp");
+       Ball->Picture->Bitmap->Handle=LoadBitmap(HInstance,"BALL");
        Ball->Visible=true;
        TimeBall->Enabled=true;
        }
@@ -212,7 +212,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    Countdown->Caption="02:00";
    PktLeft->Caption="0";
    PktRight->Caption="0";
-   
+
+   PaddleL->Picture->Bitmap->Handle=LoadBitmap(HInstance,"PADL");
+   PaddleR->Picture->Bitmap->Handle=LoadBitmap(HInstance,"PADR");
+
    TimeTotal->Enabled=false;
    TimeBall->Enabled=false;
    TLeftD->Enabled=false;
@@ -249,7 +252,7 @@ void __fastcall TForm1::BStartClick(TObject *Sender)
    Countdown->Font->Color=clWindowText;
    PlayerLeft->Font->Color= clWindowText;
    PlayerRight->Font->Color= clWindowText;
-   Ball->Picture->LoadFromFile("img/ball.bmp");
+   Ball->Picture->Bitmap->Handle=LoadBitmap(HInstance,"BALL");
    Countdown->Caption="02:00";
    PktLeft->Caption="0";
    PktRight->Caption="0";

@@ -27,7 +27,7 @@
 *.lib
 
 # Executables
-
+/img
 *.out
 *.app
-/img
+*.zip
